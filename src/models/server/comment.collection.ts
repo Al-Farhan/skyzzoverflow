@@ -5,8 +5,8 @@ import { databses } from "./config";
 export default async function createCommentCollection() {
     // creating Collection
     await databses.createCollection(db, commentCollection, commentCollection, [
-        Permission.read("any"),
         Permission.create("users"),
+        Permission.read("any"),
         Permission.read("users"),
         Permission.update("users"),
         Permission.delete("users"),

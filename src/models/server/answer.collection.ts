@@ -5,8 +5,8 @@ import { databses } from "./config";
 export default async function createAnswerCollection() {
   // creating collection
   await databses.createCollection(db, answerCollection, answerCollection, [
-    Permission.read("any"),
     Permission.create("users"),
+    Permission.read("any"),
     Permission.read("users"),
     Permission.update("users"),
     Permission.delete("users"),
