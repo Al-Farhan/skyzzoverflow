@@ -1,4 +1,4 @@
-export const db = "skyzzoverflow"
+export const db = "skyzzoverflow-db"
 export const questionCollection = "questions"
 export const answerCollection = "answers"
 export const commentCollection = "comments"

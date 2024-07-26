@@ -13,7 +13,6 @@ export default async function getOrCreateStorage() {
                 questionAttachmentBucket,
                 [
                     Permission.create("users"),
-                    Permission.write("users"),
                     Permission.read("any"),
                     Permission.read("users"),
                     Permission.update("users"),
