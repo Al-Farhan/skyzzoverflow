@@ -4,15 +4,15 @@ import createQuestionCollection from "./question.collection";
 import createCommentCollection from "./comment.collection";
 import createVoteCollection from "./vote.collection";
 
-import { databses } from "./config";
+import { databases } from "./config";
 
 export default async function getOrCreateDb() {
     try {
-        await databses.get(db);
+        await databases.get(db);
         console.log("Database connected");
     } catch (error) {
         try {
-            await databses.create(db, db);
+            await databases.create(db, db);
             console.log("Database Created");
             // create collections
             await Promise.all([
@@ -30,5 +30,5 @@ export default async function getOrCreateDb() {
         }
     }
 
-    return databses;
+    return databases;
 }

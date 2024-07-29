@@ -1,5 +1,5 @@
 import { answerCollection, db } from "@/models/name";
-import { databses, users } from "@/models/server/config";
+import { databases, users } from "@/models/server/config";
 import { NextRequest, NextResponse } from "next/server";
 import { ID } from "node-appwrite";
 import { UserPrefs } from "@/store/Auth";
@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   try {
     const { questionId, answer, authorId } = await request.json();
 
-    const response = await databses.createDocument(
+    const response = await databases.createDocument(
       db,
       answerCollection,
       ID.unique(),
@@ -44,10 +44,10 @@ export async function DELETE(request: NextRequest) {
   try {
     const { answerId } = await request.json();
 
-    const answer = await databses.getDocument(db, answerCollection, answerId);
+    const answer = await databases.getDocument(db, answerCollection, answerId);
     // TODO: check whether answer is present or not
 
-    const response = await databses.deleteDocument(
+    const response = await databases.deleteDocument(
       db,
       answerCollection,
       answerId

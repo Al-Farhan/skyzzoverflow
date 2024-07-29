@@ -1,10 +1,10 @@
 import { Permission } from "node-appwrite";
 import { commentCollection, db } from "../name";
-import { databses } from "./config";
+import { databases } from "./config";
 
 export default async function createCommentCollection() {
     // creating Collection
-    await databses.createCollection(db, commentCollection, commentCollection, [
+    await databases.createCollection(db, commentCollection, commentCollection, [
         Permission.create("users"),
         Permission.read("any"),
         Permission.read("users"),
@@ -15,10 +15,10 @@ export default async function createCommentCollection() {
 
     // creating Attributes
     await Promise.all([
-        databses.createStringAttribute(db, commentCollection, "content", 10000, true),
-        databses.createEnumAttribute(db, commentCollection, "type", ["answer", "question"], true),
-        databses.createStringAttribute(db, commentCollection, "typeId", 50, true),
-        databses.createStringAttribute(db, commentCollection, "authorId", 50, true),
+        databases.createStringAttribute(db, commentCollection, "content", 10000, true),
+        databases.createEnumAttribute(db, commentCollection, "type", ["answer", "question"], true),
+        databases.createStringAttribute(db, commentCollection, "typeId", 50, true),
+        databases.createStringAttribute(db, commentCollection, "authorId", 50, true),
     ])
     console.log("Comment Attribute Created");
     

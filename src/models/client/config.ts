@@ -6,9 +6,9 @@ const client = new Client()
     .setEndpoint(env.appwrite.endpoint) // API Endpoint
     .setProject(env.appwrite.projectId); // Project ID
 
-const databses = new Databases(client);
+const databases = new Databases(client);
 const account = new Account(client);
 const avatars = new Avatars(client);
 const storage = new Storage(client);
 
-export { client, databses, account, avatars, storage }
+export { client, databases, account, avatars, storage }

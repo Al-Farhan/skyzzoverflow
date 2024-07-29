@@ -4,7 +4,7 @@ import {
   questionCollection,
   voteCollection,
 } from "@/models/name";
-import { databses, users } from "@/models/server/config";
+import { databases, users } from "@/models/server/config";
 import { UserPrefs } from "@/store/Auth";
 import { NextRequest, NextResponse } from "next/server";
 import { ID, Query } from "node-appwrite";
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     // grab the data
     const { votedById, voteStatus, type, typeId } = await request.json();
     // list-document
-    const response = await databses.listDocuments(db, voteCollection, [
+    const response = await databases.listDocuments(db, voteCollection, [
       Query.equal("type", type),
       Query.equal("typeId", typeId),
       Query.equal("votedById", votedById),
@@ -23,14 +23,14 @@ export async function POST(request: NextRequest) {
     console.log("Response in vote route: ", response);
 
     if (response.documents.length > 0) {
-      await databses.deleteDocument(
+      await databases.deleteDocument(
         db,
         voteCollection,
         response.documents[0].$id
       );
 
       // Decrease the reputation of the question/answer author
-      const questionOrAnswer = await databses.getDocument(
+      const questionOrAnswer = await databases.getDocument(
         db,
         type === "question" ? questionCollection : answerCollection,
         typeId
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     // that means prev vote does not exists or vote status changes
     if (response.documents[0]?.voteStatus !== voteStatus) {
-      const doc = await databses.createDocument(
+      const doc = await databases.createDocument(
         db,
         voteCollection,
         ID.unique(),
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       );
 
       // Increase/Decrease the reputation of the question/answer author accordingly
-      const questionOrAnswer = await databses.getDocument(
+      const questionOrAnswer = await databases.getDocument(
         db,
         type === "question" ? questionCollection : answerCollection,
         typeId
@@ -94,14 +94,14 @@ export async function POST(request: NextRequest) {
     }
 
     const [upvotes, downvotes] = await Promise.all([
-      databses.listDocuments(db, voteCollection, [
+      databases.listDocuments(db, voteCollection, [
         Query.equal("type", type),
         Query.equal("typeId", typeId),
         Query.equal("voteStatus", "upvoted"),
         Query.equal("votedById", votedById),
         Query.limit(1), // for optimization as we only need total
       ]),
-      databses.listDocuments(db, voteCollection, [
+      databases.listDocuments(db, voteCollection, [
         Query.equal("type", type),
         Query.equal("typeId", typeId),
         Query.equal("voteStatus", "downvoted"),

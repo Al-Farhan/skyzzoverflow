@@ -9,9 +9,9 @@ client
     .setKey(env.appwrite.apiKey) // Secret API key
 ;
 
-const databses = new Databases(client);
+const databases = new Databases(client);
 const avatars = new Avatars(client);
 const storage = new Storage(client);
 const users = new Users(client);
 
-export { client, databses, avatars, storage, users }
+export { client, databases, avatars, storage, users }
