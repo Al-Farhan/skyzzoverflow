@@ -12,12 +12,12 @@ import { ID, Query } from "node-appwrite";
 export async function POST(request: NextRequest) {
   try {
     // grab the data
-    const { votedById, voteStatus, type, typeId } = await request.json();
+    const { voteById, voteStatus, type, typeId } = await request.json();
     // list-document
     const response = await databases.listDocuments(db, voteCollection, [
       Query.equal("type", type),
       Query.equal("typeId", typeId),
-      Query.equal("votedById", votedById),
+      Query.equal("voteById", voteById),
     ]);
 
     console.log("Response in vote route: ", response);
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
           type,
           typeId,
           voteStatus,
-          votedById,
+          voteById,
         }
       );
 
@@ -98,14 +98,14 @@ export async function POST(request: NextRequest) {
         Query.equal("type", type),
         Query.equal("typeId", typeId),
         Query.equal("voteStatus", "upvoted"),
-        Query.equal("votedById", votedById),
+        Query.equal("voteById", voteById),
         Query.limit(1), // for optimization as we only need total
       ]),
       databases.listDocuments(db, voteCollection, [
         Query.equal("type", type),
         Query.equal("typeId", typeId),
         Query.equal("voteStatus", "downvoted"),
-        Query.equal("votedById", votedById),
+        Query.equal("voteById", voteById),
         Query.limit(1),
       ]),
     ]);

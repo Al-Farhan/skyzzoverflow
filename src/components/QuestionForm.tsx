@@ -179,6 +179,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                 <Input
                     id="title"
                     name="title"
+                    className="text-black"
                     placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
                     type="text"
                     value={formData.title}
@@ -237,6 +238,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
                         <Input
                             id="tag"
                             name="tag"
+                            className="text-black"
                             placeholder="e.g. (java c objective-c)"
                             type="text"
                             value={tag}
