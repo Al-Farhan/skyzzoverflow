@@ -20,7 +20,7 @@ const Page = async ({
         Query.equal("voteById", params.userId),
         Query.orderDesc("$createdAt"),
         Query.offset((+searchParams.page - 1) * 25),
-        Query.limit(25),
+        // Query.limit(25),
     ];
 
     if (searchParams.voteStatus) query.push(Query.equal("voteStatus", searchParams.voteStatus));

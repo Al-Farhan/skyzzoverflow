@@ -19,7 +19,7 @@ const Page = async ({
         Query.equal("authorId", params.userId),
         Query.orderDesc("$createdAt"),
         Query.offset((+searchParams.page - 1) * 25),
-        Query.limit(25),
+        // Query.limit(25),
     ];
 
     const questions = await databases.listDocuments(db, questionCollection, queries);

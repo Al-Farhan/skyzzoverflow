@@ -24,6 +24,7 @@ const Search = () => {
     return (
         <form className="flex w-full flex-row gap-4" onSubmit={handleSearch}>
             <Input
+                className="text-black"
                 type="text"
                 placeholder="Search questions"
                 value={search}

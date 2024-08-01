@@ -19,7 +19,7 @@ const Page = async ({
     const queries = [
         Query.orderDesc("$createdAt"),
         Query.offset((+searchParams.page - 1) * 25),
-        // Query.limit(25),
+        Query.limit(25),
     ];
 
     if (searchParams.tag) queries.push(Query.equal("tags", searchParams.tag));
@@ -60,7 +60,7 @@ const Page = async ({
             };
         })
     );
-
+        
     return (
         <div className="container mx-auto px-4 pb-20 pt-36">
             <div className="mb-10 flex items-center justify-between">

@@ -41,6 +41,7 @@ const LatestQuestions = async () => {
 
     return (
         <div className="space-y-6">
+            <h2>Latest Questions</h2>
             {questions.documents.map(question => (
                 <QuestionCard key={question.$id} ques={question} />
             ))}
