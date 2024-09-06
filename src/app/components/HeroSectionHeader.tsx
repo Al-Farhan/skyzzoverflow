@@ -54,7 +54,7 @@ const HeroSectionHeader = () => {
                 color="#ffffff"
                 refresh
             />
-            <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2 overflow-hidden">
+            <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="flex items-center justify-center">
                     <div className="space-y-4 text-center">
                         <h1 className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-3xl md:text-7xl  font-bold leading-none tracking-tighter text-transparent">
@@ -95,7 +95,7 @@ const HeroSectionHeader = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-center">
-                    <div className="relative max-w-[24rem] md:max-w-[32rem] overflow-hidden">
+                    <div className="relative max-w-[32rem] overflow-hidden">
                         <IconCloud iconSlugs={slugs} />
                     </div>
                 </div>
